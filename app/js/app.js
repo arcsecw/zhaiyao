@@ -22,13 +22,7 @@ import SiteFooter from './components/SiteFooter';
 import { myConfig } from './components/config.js';
 
 class App extends Component {
-  
   render() {
-    var routeLinks = (
-    myConfig.pages.map((page)=>{
-        return (<RouteLink to="run" query = {{team:page.teamid}}>{page.des}</RouteLink>)
-    })
-    )
     return (
       <div className="ask-page">
         <Topbar
@@ -40,7 +34,6 @@ class App extends Component {
         >
           <CollapsibleNav eventKey="nav">
             <Nav topbar>
-              {routeLinks}
               <RouteLink to = 'text' >文本</RouteLink>
               <RouteLink to = 'movie' >视频</RouteLink>
             </Nav>
@@ -69,6 +62,7 @@ function requireAuth(nextState, replace) {
 // Pages
 import Text_zhaiyao from './pages/Text_zhaiyao';
 import Movie_zhaiyao from './pages/Movie_zhaiyao';
+import Process_movie from './pages/Process_movie'
 import Index from './pages/Index';
 import Login from './pages/Login'
 import Logout from './pages/Logout'
@@ -78,6 +72,8 @@ const routes = (
       <IndexRoute component={Index} />
       <Route path = '/text' component = {Text_zhaiyao}/>
       <Route path = '/movie' component = {Movie_zhaiyao}/>
+      <Route path = '/p_movie' component = {Process_movie}/>
+
       <Route path = '/logout' component = {Logout}/>
     </Route>
   </Router>

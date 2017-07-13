@@ -5,18 +5,21 @@ import {
   FormGroup,
   ButtonToolbar,
   Tabs,
+  Button,
   Item,
   ModalTrigger,
   AvgGrid,
   Form,
   Article,
-  Panel
+  Panel,
+  Thumbnails,
+  Thumbnail
+
 } from 'amazeui-react';
-import {Editor, EditorState} from 'draft-js';
-import { withRouter } from 'react-router'
+import ReactPlayer from 'react-player'
+import { withRouter,Link } from 'react-router'
 import { myConfig } from '../components/config.js';
 import {post} from '../components/Call'
-import View from '../components/View'
 const convertFileToString = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsText(file)
@@ -27,13 +30,32 @@ const convertFileToString = file => new Promise((resolve, reject) => {
 var Movie_zhaiyao  =  withRouter(React.createClass( {
     getInitialState(){
         return {
-                is_file:true,
-                c_1:"关键词",
-                c_2:"关键短语",
-                c_3:"快闪结果",
-                num_1:2,
-                num_2:2,
-                num_3:5,
+                url:'https://streamable.com/',
+                filelist:[
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                    'ifjh',
+                    'moo',
+                ],
+
             }
   },
     update_all(){
@@ -77,31 +99,28 @@ var Movie_zhaiyao  =  withRouter(React.createClass( {
         })
    },
     render() {
-        var parms = this.state.parms
-        var iconUser = <span className="am-icon-user"></span>;
-        var input = !this.state.is_file?<Input  type="textarea" label="正文内容" value = {this.state.content} onChange={this.handle_content_change} />
-        :<Input type="file" label="请选择txt格式的文本文件" id = 'file' onChange={this.handle_file_change}/>
+        //var a = <ReactPlayer url={this.state.url+re} width="220" height="110" />
+        var movie_list = (this.state.filelist.map((re)=>{
+            return (
+                <Link to='p_movie' query ={{movie_name:re}}>
+                <Thumbnail
+                caption={<div>
+                        <h3>{re}</h3>
+                        <p>
+                            此处应有一小段视频简介
+                        </p>
+                    </div>}
+                src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+            </Link>
+        )
+        }))
         return (
                 <Container>
                     <br/>
-                    <ButtonToolbar>
-                        <Input  type = "submit" value="切换输入形式" standalone onClick={()=>{this.setState({is_file:!this.state.is_file})}} />
-                    </ButtonToolbar>
-                    <br/>   
-                        {input}
-                    <br/>   
-                    <Form inline>
-                    <Input  label="预计阅读时间" type="text" name="num_3" value = {this.state.num_3} onChange={this.handle_num_3} />分钟                    
-                    </Form>
-                    <br/>
-                
                     <Panel>
-                    <Article
-                    title = "快闪阅读"
-                    >
-    
-    {this.state.c_3}
-                    </Article>
+                        <Thumbnails sm={4}>
+                            {movie_list}
+                        </Thumbnails>
                     </Panel>
                 </Container>
         )
