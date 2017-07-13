@@ -68,8 +68,8 @@ function requireAuth(nextState, replace) {
 
 // Pages
 import Text_zhaiyao from './pages/Text_zhaiyao';
+import Movie_zhaiyao from './pages/Movie_zhaiyao';
 import Index from './pages/Index';
-import Page1 from './pages/Page1';
 import Login from './pages/Login'
 import Logout from './pages/Logout'
 const routes = (
@@ -77,7 +77,7 @@ const routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Index} />
       <Route path = '/text' component = {Text_zhaiyao}/>
-      <Route path = '/movie' component = {Text_zhaiyao}/>
+      <Route path = '/movie' component = {Movie_zhaiyao}/>
       <Route path = '/logout' component = {Logout}/>
     </Route>
   </Router>
