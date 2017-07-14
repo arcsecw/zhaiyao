@@ -12,7 +12,7 @@ import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import autoprefixer from 'autoprefixer';
-
+import gulpSass from 'gulp-sass'
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const isProduction = process.env.NODE_ENV === 'production';
@@ -87,7 +87,6 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/css'))
     .pipe($.size({title: 'styles'}));
 });
-
 // 打包 Common JS 模块
 var b = browserify({
   cache: {},
@@ -152,7 +151,7 @@ gulp.task('build', function(cb) {
 // 监视源文件变化自动cd编译
 gulp.task('watch', function() {
   gulp.watch('app/**/*.html', ['html']);
-  gulp.watch('app/less/**/*less', ['styles']);
+  gulp.watch('app/less/*.less', ['styles']);
   gulp.watch('app/i/**/*', ['images']);
 });
 
