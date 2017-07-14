@@ -17,6 +17,7 @@ import { withRouter } from 'react-router'
 import { myConfig } from '../components/config.js';
 import {post} from '../components/Call'
 import View from '../components/View'
+import ReactPDF from 'react-pdf'
 const convertFileToString = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsText(file)
@@ -79,14 +80,13 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
     render() {
         var parms = this.state.parms
         var iconUser = <span className="am-icon-user"></span>;
-        var input = !this.state.is_file?<Input  type="textarea" label="正文内容" value = {this.state.content} onChange={this.handle_content_change} />
-        :<Input type="file" label="请选择txt格式的文本文件" id = 'file' onChange={this.handle_file_change}/>
+        var input = <Input type="file" label="请选择上传txt格式的文本文件" id = 'file' onChange={this.handle_file_change}/>
         return (
                 <Container>
                     <br/>
-                    <ButtonToolbar>
+                    {/* <ButtonToolbar>
                         <Input  type = "submit" value="切换输入形式" standalone onClick={()=>{this.setState({is_file:!this.state.is_file})}} />
-                    </ButtonToolbar>
+                    </ButtonToolbar> */}
                     <br/>   
                         {input}
                     <br/>   
@@ -94,16 +94,16 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
                     <Input  label="预计阅读时间" type="text" name="num_3" value = {this.state.num_3} onChange={this.handle_num_3} />分钟                    
                     </Form>
                     <br/>
+                    <ButtonToolbar>
+                        <Input  type = "submit" value="提交" standalone onClick={()=>{this.setState({is_file:!this.state.is_file})}} />
+                    </ButtonToolbar>
                 
-                    <Panel>
-                    <Article
-                    title = "快闪阅读"
-                    >
-    
-    {this.state.c_3}
-                    </Article>
-                    </Panel>
+                    
+                     <ReactPDF file="" />
                 </Container>
+
+            
+
         )
     }
 })
