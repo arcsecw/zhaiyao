@@ -73,10 +73,11 @@
     ]
   },
   "dependencies": {
-    "whatwg-fetch": "^1.0.0",
     "draft-js": "^0.8.1",
     "react-modal": "^1.4.0",
     "react-modal-dialog": "^3.0.2",
-    "react-spinjs": "^3.0.0"
+    "react-pdf": "^1.6.1",
+    "react-spinjs": "^3.0.0",
+    "whatwg-fetch": "^1.0.0"
   }
 }

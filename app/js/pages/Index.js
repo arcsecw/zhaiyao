@@ -18,6 +18,7 @@ import { myConfig } from '../components/config.js';
 import {post} from '../components/Call'
 import View from '../components/View'
 
+
 var Index  =  withRouter(React.createClass( {
     getInitialState(){
         return {
@@ -54,7 +55,7 @@ var Index  =  withRouter(React.createClass( {
 
                 <p>还在嫌视频时间太长？还在嫌剧情拖沓抓不到主旨？觉得浪费时间还不舍得弃剧？</p>
                 <p>快闪视频来释放你的天性，只需三步。</p>
-                <p>上传想快速预览的视频，点击提交，快闪视频呈现出来之后，可以直接预览</p>
+                <p>上传想快速预览的视频，点击提交，快闪视频呈现出来之后，可以直接预览。</p>
                 <hr className="am-article-divider"/>
                 
                 </Article>
@@ -64,4 +65,4 @@ var Index  =  withRouter(React.createClass( {
     }
 })
 )
-export
+export default Index
