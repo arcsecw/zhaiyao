@@ -12,7 +12,8 @@ import {
   Article,
   Panel,
   Grid,
-  Col
+  Col,
+  Image
 } from 'amazeui-react';
 import {Editor, EditorState} from 'draft-js';
 import { withRouter } from 'react-router'
@@ -100,12 +101,13 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
         this.setState({num_3:e.target.value},()=>{
             this.update_all()
         })
+
    },
     render() {
         var parms = this.state.parms
         var iconUser = <span className="am-icon-user"></span>;
         var input = <Input type="file"id = 'file' />
-        var pdf = this.state.pdf_url==undefined ?'' :<embed src = {this.state.pdf_url} width="800" height="1000"/> 
+        var pdf = this.state.pdf_url==undefined ?<Image src='../../i/tip.jpg'responsive />:<embed src = {this.state.pdf_url} width="935" height="1000"/> 
         return (
                 <Container>
                     {/* <br/>
@@ -120,8 +122,9 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
                          <Col sm={3 }>
                          <Input   addonBefore="预计阅读时间" addonAfter="分钟"  type="text" name="num_3" amSize="sm"value = {this.state.num_3} onChange={this.handle_num_3}/>                  
                         </Col>
-                        
-                        
+                    
+
+
                     </Grid>
                     <Grid>
                          <Col sm={4 }>
@@ -132,18 +135,15 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
                     <Col sm={4 }>
                                         
                         </Col>
-                    <br/>    
+
+
+                     
                           
                    
-                    
-                    <br/>
-                    
-                    <ButtonToolbar>
-                        
-                    </ButtonToolbar>
-                    
+                   
                     <br/>
                     {pdf}
+                    
                     </Panel>
                 </Container>
 

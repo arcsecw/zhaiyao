@@ -40,18 +40,18 @@
     "gulp-postcss": "^6.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
+    "gulp-sass": "^3.1.0",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-router": "^2.6.1",
     "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0",
-    "gulp-sass": "^3.1.0"
+    "watchify": "^3.7.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -77,16 +77,11 @@
     "draft-js": "^0.8.1",
     "react-modal": "^1.4.0",
     "react-modal-dialog": "^3.0.2",
-<<<<<<< HEAD
     "react-pdf": "^1.6.1",
-    "react-spinjs": "^3.0.0",
-    "whatwg-fetch": "^1.0.0"
-=======
-    "react-spinjs": "^3.0.0",
     "react-player": "^0.18.0",
+    "react-player-controls": "^0.5.14",
+    "react-spinjs": "^3.0.0",
     "screenfull": "^3.3.1",
-    "normalize.css": "^7.0.0",
-    "react-player-controls": "^0.5.14"
->>>>>>> 9bd9c7614b6859c658920285690e9b09af4de843
+    "whatwg-fetch": "^1.0.0"
   }
 }

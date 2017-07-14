@@ -12,7 +12,6 @@ import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import autoprefixer from 'autoprefixer';
-import gulpSass from 'gulp-sass'
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const isProduction = process.env.NODE_ENV === 'production';
