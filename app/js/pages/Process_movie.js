@@ -67,10 +67,10 @@ var Process_movie  =  withRouter(React.createClass( {
                         分钟
                         <button onClick={this.query_new}>确定</button>
                         </Col>     
-                        <Col sm={2}>                                 
+                        <Col sm={1}>                                 
                         </Col>     
-                        <Col sm={2}>                                 
-                        {this.state.message}
+                        <Col sm={3} >                                 
+                        <span style = {{"color":"red"}}> {this.state.message}</span>
                         </Col>     
                     </Grid>
                     }>
