@@ -32,17 +32,17 @@ const onAction = function(index, direction) {
 const data2 = [
   {
     to:"/",
-    img: '../../i/jianjie.jpg',
+    img: 'i/jianjie.jpg',
     
   },
   {
       to:"text",
-    img: '../../i/text.jpg',
+    img: 'i/text.jpg',
   
   },
   {
       to:"movie",
-    img: '../../i/movie.jpg',
+    img: 'i/movie.jpg',
    
   },
 ];

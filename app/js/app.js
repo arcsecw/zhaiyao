@@ -34,8 +34,8 @@ class App extends Component {
         >
           <CollapsibleNav eventKey="nav">
             <Nav topbar>
-              <RouteLink to = 'text' >文本</RouteLink>
-              <RouteLink to = 'movie' >视频</RouteLink>
+              <RouteLink to = 'text' >快闪阅读</RouteLink>
+              <RouteLink to = 'movie' >快闪视频</RouteLink>
             </Nav>
           </CollapsibleNav>
         </Topbar>

@@ -77,7 +77,6 @@
     "draft-js": "^0.8.1",
     "react-modal": "^1.4.0",
     "react-modal-dialog": "^3.0.2",
-    "react-pdf": "^1.6.1",
     "react-player": "^0.18.0",
     "react-player-controls": "^0.5.14",
     "react-spinjs": "^3.0.0",

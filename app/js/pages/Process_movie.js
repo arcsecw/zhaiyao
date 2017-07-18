@@ -15,14 +15,15 @@ import {
   Panel,
   Thumbnails,
   Thumbnail,
-  Col
+  Col,
+  Badge
 
 } from 'amazeui-react';
 //import Player from '../components/player/Player'
 import ReactPlayer from 'react-player'
 import { withRouter,Link } from 'react-router'
 import { myConfig } from '../components/config.js';
-import {post} from '../components/Call'
+import {get} from '../components/Call'
 const convertFileToString = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsText(file)
@@ -30,36 +31,57 @@ const convertFileToString = file => new Promise((resolve, reject) => {
     reader.onload = () => resolve(reader.result);
     reader.onerror = reject;
 });
+var base_url  = "http://253.3004.arcsec.top:8080/"
+
+var api_url  = "http://253.3004.arcsec.top:8080/movies/"
+var source_url= 'http://253.3004.arcsec.top:8080/source/'
+var result_url= 'http://253.3004.arcsec.top:8080/result/'
 var Process_movie  =  withRouter(React.createClass( {
     getInitialState(){
         var movie_name = this.props.location.query.movie_name
-        var source_url= 'https://streamable.com/'
         return {
-                source_url:source_url,
                 movie_name:movie_name,
+                source_name:movie_name,
+                file_list:[
+                ],
+                playing:source_url+movie_name,
+                play:true,
                 message:'',
                 yasuo:10,
                 url:source_url+movie_name
             }
   },
+    componentDidMount(){
+        this.update()
+    },
+    update(){
+        var  query_url = base_url+'re/'+this.state.movie_name
+        get(query_url,{},(re)=>{
+            for (let i = 0 ;i < re.length;i++){
+                re[i] = result_url+re[i]
+            }
+            this.setState({file_list:re})
+        })
+    },
     query_new (){
-    var form = new FormData()
     this.setState({message:'服务器正在处理...'})
-    form.append('time',this.state.yasuo)
-    form.append('name',this.state.name)
-    post('url',form,(re)=>{
-      this.setState({message:''})
-      this.setState({url:re.url})
+    get(api_url+this.state.source_name.split('.')[0]+'.avi',{"time":this.state.yasuo},(re)=>{
+        this.setState({message:''})
+        this.update()
+        alert('服务器处理完成')
     })
   },
     render() {
+        var play_list = (this.state.file_list.map(file=>{
+            return <Button onClick = {(e)=>{this.setState({playing:file})}}>{file.split('/')[5]}分钟</Button>
+        }))
         return (
             <Container>
                 <br/>
                 <Panel header={
                     <Grid>
                         <Col sm={4}>
-                        {this.state.movie_name}
+                        {this.state.source_name}
                         </Col>
                         <Col sm={4}>       
                         压缩到               
@@ -74,15 +96,22 @@ var Process_movie  =  withRouter(React.createClass( {
                         </Col>     
                     </Grid>
                     }>
+                    <Grid>
+                        <Col>
+                            <Button onClick = {(e)=>{this.setState({playing:this.state.url})}}>原视频</Button>
+                            &nbsp;
+                            {play_list}
+                        </Col>
+                    </Grid>
                     <ReactPlayer 
                     className='react-player'
                     width='100%'
                     height='100%'
                     controls={true}
-                    url={this.state.url}
-                    playing={false}
+                    url={this.state.playing}
+                    playing={this.state.play}
                     />
-                    
+                   
                 </Panel>
                 
             </Container>

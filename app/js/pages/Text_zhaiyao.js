@@ -20,7 +20,6 @@ import { withRouter } from 'react-router'
 import { myConfig } from '../components/config.js';
 import {post} from '../components/Call'
 import View from '../components/View'
-import ReactPDF from 'react-pdf'
 
 
 const convertFileToString = file => new Promise((resolve, reject) => {
@@ -87,27 +86,32 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
    
     handle_file_change(e){
         var f = document.getElementById('file').files[0]
+        if (f==undefined){
+            alert('请选择一个txt格式的文件')
+            return
+        }
         var f3 = new FormData()
         f3.append('text',f)
         f3.append('num',this.state.num_3)
         post('SummaryServlet',f3,(re)=>{
         //post 成功返回结果执行的代码
-            this.setState({pdf_url:re.res})
+            this.setState({pdf_url:re.res},()=>{
+                console.log(this.state)
+                this.forceUpdate()
+            })
         })
 
     },
    
    handle_num_3(e){
-        this.setState({num_3:e.target.value},()=>{
-            this.update_all()
-        })
+        this.setState({num_3:e.target.value})
 
    },
     render() {
         var parms = this.state.parms
         var iconUser = <span className="am-icon-user"></span>;
         var input = <Input type="file"id = 'file' />
-        var pdf = this.state.pdf_url==undefined ?<Image src='../../i/tip.jpg'responsive />:<embed src = {this.state.pdf_url} width="935" height="1000"/> 
+        var pdf = this.state.pdf_url==undefined ?<Image src='i/tip.jpg'responsive />:<iframe src = {this.state.pdf_url} width="935" height="1000"/> 
         return (
                 <Container>
                     {/* <br/>
@@ -119,7 +123,7 @@ var Text_zhaiyao  =  withRouter(React.createClass( {
                          <Col sm={4}>{input}</Col>
                     </Grid>
                     <Grid>
-                         <Col sm={3 }>
+                         <Col sm={4 }>
                          <Input   addonBefore="预计阅读时间" addonAfter="分钟"  type="text" name="num_3" amSize="sm"value = {this.state.num_3} onChange={this.handle_num_3}/>                  
                         </Col>
                     

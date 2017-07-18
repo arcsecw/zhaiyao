@@ -19,7 +19,8 @@ import {
 import ReactPlayer from 'react-player'
 import { withRouter,Link } from 'react-router'
 import { myConfig } from '../components/config.js';
-import {post} from '../components/Call'
+import {post,get} from '../components/Call'
+const url = 'http://253.3004.arcsec.top:8080/'
 const convertFileToString = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsText(file)
@@ -30,34 +31,17 @@ const convertFileToString = file => new Promise((resolve, reject) => {
 var Movie_zhaiyao  =  withRouter(React.createClass( {
     getInitialState(){
         return {
-                url:'https://streamable.com/',
+                url:'',
                 filelist:[
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
-                    'ifjh',
-                    'moo',
                 ],
 
             }
   },
+    componentWillMount(){
+        get(url+'movies',{},(re)=>{
+            this.setState({filelist:re})
+        })
+    },
     update_all(){
         /*var f1 = new FormData()
         f1.append('text',this.state.content)

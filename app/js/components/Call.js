@@ -43,8 +43,31 @@ function get_userinfo(){
     }
 }    
 
+// function get(apipath,data,cb) {
+//     var url = u+'/'+apipath  +'?'     
+    
+//     for (let k of Object.keys(data)){
+//         url = url + k + '=' + data[k]
+//     }
+//     url = encodeURI(url)
+//     fetch(url,{
+//         method:'GET',        
+//         mode:'cors',
+//     })
+//         .then(checkStatus)
+//         .then(res => {
+//             return res.json();
+//         })
+//         .then(data => {
+//             cb(data)
+//         })
+//         .catch(error => {
+//             console.log('Request failed: ', error)
+//         });
+
+// }
 function get(apipath,data,cb) {
-    var url = u+'/'+apipath  +'?'     
+    var url = apipath  +'?'     
     
     for (let k of Object.keys(data)){
         url = url + k + '=' + data[k]
