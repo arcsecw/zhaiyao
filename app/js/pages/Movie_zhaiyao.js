@@ -90,18 +90,19 @@ var Movie_zhaiyao  =  withRouter(React.createClass( {
                 <Thumbnail
                 caption={<div>
                         <h3>{re}</h3>
-                        <p>
-                            此处应有一小段视频简介
-                        </p>
                     </div>}
-                src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                 //src={this.state.url+"photo/"+re+".jpg"}
+                 src={"http://253.3004.arcsec.top:8080/"+"photo/"+re+".jpg"} 
+                 width="220" height="110"/> 
             </Link>
         )
         }))
         return (
                 <Container>
                     <br/>
+                    
                     <Panel>
+                        
                         <Thumbnails sm={4}>
                             {movie_list}
                         </Thumbnails>
