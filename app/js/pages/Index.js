@@ -30,11 +30,7 @@ const onAction = function(index, direction) {
 
 
 const data2 = [
-  {
-    to:"/",
-    img: 'i/jianjie.jpg',
-    
-  },
+  
   {
       to:"text",
     img: 'i/text.jpg',
