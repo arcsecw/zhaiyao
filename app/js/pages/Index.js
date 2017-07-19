@@ -31,6 +31,8 @@ const onAction = function(index, direction) {
 
 const data2 = [
   
+
+  
   {
       to:"text",
     img: 'i/text.jpg',
@@ -40,6 +42,7 @@ const data2 = [
       to:"movie",
     img: 'i/movie.jpg',
    
+
   },
 ];
 
@@ -82,8 +85,6 @@ const sliderCaption = (
         
         return (
             <Container >
-                
-                
                 
                 {sliderCaption}
                 
